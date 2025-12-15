@@ -29,18 +29,22 @@ $array_modules[$row["module"]] = $row["enable"];
 
 //START FUNCTION SUPTIME
 function suptime() {
-$dirty = file("/proc/uptime");          // grab the line
-$ticks = trim(strtok($dirty[0], " "));  // sanitize it (pull out the ticks)
-$mins  = $ticks / 60;                   // total mins
-$hours = $mins  / 60;                   // total hours
-$days  = floor($hours / 24);            // total days
-$hours = floor($hours - ($days * 24));  // hours left
-$mins  = floor($mins  - ($days * 60 * 24) - ($hours * 60)); // mins left
-$uptime = "";
-$uptime .= "$days dager, ";              // construct the string
-$uptime .= "$hours timer, ";
-$uptime .= "$mins minutter";
-return $uptime;                         // return the string
+    if (file_exists("/proc/uptime")) {
+        $dirty = file("/proc/uptime");          // grab the line
+        if ($dirty === false) return "Unknown OS";
+        $ticks = trim(strtok($dirty[0], " "));  // sanitize it (pull out the ticks)
+        $mins  = $ticks / 60;                   // total mins
+        $hours = $mins  / 60;                   // total hours
+        $days  = floor($hours / 24);            // total days
+        $hours = floor($hours - ($days * 24));  // hours left
+        $mins  = floor($mins  - ($days * 60 * 24) - ($hours * 60)); // mins left
+        $uptime = "";
+        $uptime .= "$days dager, ";              // construct the string
+        $uptime .= "$hours timer, ";
+        $uptime .= "$mins minutter";
+        return $uptime;                         // return the string
+    }
+    return "Unknown OS";
 };
 //STOP FUNCTION SUPTIME
 ?>

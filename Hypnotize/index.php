@@ -101,6 +101,8 @@ print '<!DOCTYPE html>
         //echo `uptime`;
         $time = date('H:i:s');
         $uptime_str = "up ?";
+        $read_uptime = false;
+
         if (file_exists('/proc/uptime')) {
             $uptime_seconds = (float)file_get_contents('/proc/uptime');
             $days = floor($uptime_seconds / 86400);
@@ -113,20 +115,32 @@ print '<!DOCTYPE html>
                 $uptime_str .= "$days day" . ($days > 1 ? 's' : '') . ", ";
             }
             $uptime_str .= sprintf("%d:%02d", $hours, $minutes);
+            $read_uptime = true;
         }
 
         $load_str = "load average: 0.00, 0.00, 0.00";
+        $read_load = false;
+
         if (function_exists('sys_getloadavg')) {
             $load = sys_getloadavg();
-            $load_str = "load average: " . implode(', ', array_map(function($n) { return sprintf('%.2f', $n); }, $load));
+            if ($load) {
+                $load_str = "load average: " . implode(', ', array_map(function($n) { return sprintf('%.2f', $n); }, $load));
+                $read_load = true;
+            }
         } elseif (file_exists('/proc/loadavg')) {
             $content = file_get_contents('/proc/loadavg');
             $parts = explode(' ', $content);
             if (count($parts) >= 3) {
                 $load_str = "load average: " . $parts[0] . ", " . $parts[1] . ", " . $parts[2];
+                $read_load = true;
             }
         }
-        print " $time $uptime_str,  $load_str";
+
+        if (!$read_uptime && !$read_load) {
+            print " $time Unknown OS";
+        } else {
+            print " $time $uptime_str,  $load_str";
+        }
         print '</font><br>
         <strong>[</strong> <a href="'.$_SERVER["PHP_SELF"].'" class="menu">Hjem</a> <strong>]</strong> ';if($error != "503"){ if (($maintenance ?? '0')=="1" && $origip == ($maintenanceip ?? '')) { include 'includes/menu.php';}elseif(($maintenance ?? '0')=="0") { include 'includes/menu.php';};}; print'
     </div>
