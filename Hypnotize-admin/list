@@ -1,0 +1,19 @@
+Binary file fonts/manuscript.ttf matches
+Binary file images/smilies/6.gif matches
+Binary file images/smilies/1.gif matches
+Binary file images/smilies/5.gif matches
+Binary file images/smilies/8.gif matches
+Binary file images/smilies/4.gif matches
+Binary file images/smilies/2.gif matches
+Binary file images/smilies/7.gif matches
+Binary file images/mysql.jpg matches
+Binary file images/hex.gif matches
+Binary file images/apc.jpg matches
+Binary file images/linux.jpg matches
+Binary file images/apache.jpg matches
+Binary file images/php.jpg matches
+Binary file images/Hypnotize.jpg matches
+includes/thumb.php:if($mtype=="image/jpeg") { $bilde=@imagecreatefromjpeg("$bilde_fil");
+includes/thumb.php:} elseif ($mtype=="image/gif") { $bilde=@imagecreatefromgif("$bilde_fil"); 
+includes/thumb.php:} elseif ($mtype=="image/png") {$bilde=@imagecreatefrompng("$bilde_fil");
+includes/functions.php:	$code = array(":)",":D",":O",":P",";)",":(",":|","(H)",":@");

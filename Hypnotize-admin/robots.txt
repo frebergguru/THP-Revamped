@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /Modules/
+Disallow: /includes/
+Disallow: /css/
+Disallow: /images/

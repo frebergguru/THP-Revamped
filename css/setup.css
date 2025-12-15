@@ -1,0 +1,24 @@
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f8; padding: 40px; color: #333; }
+.container { background-color: #fff; padding: 30px; border-radius: 8px; max-width: 900px; margin: 0 auto; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+h2 { text-align: center; color: #2c3e50; margin-bottom: 30px; }
+h3 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 30px; margin-bottom: 20px; color: #34495e; }
+label { display: block; margin-top: 15px; font-weight: 600; font-size: 0.95em; }
+input[type="text"], input[type="password"], input[type="number"], select { width: 100%; padding: 10px; margin-top: 5px; box-sizing: border-box; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+input[type="checkbox"] { margin-top: 10px; transform: scale(1.2); margin-right: 5px; }
+input[type="submit"] { width: 100%; padding: 12px; background-color: #007BFF; color: white; border: none; margin-top: 30px; cursor: pointer; border-radius: 4px; font-size: 16px; font-weight: bold; transition: background 0.2s; }
+input[type="submit"]:hover { background-color: #0056b3; }
+.error { color: #721c24; background-color: #f8d7da; border-color: #f5c6cb; padding: 15px; border-radius: 4px; margin-bottom: 20px; }
+.success { color: #155724; background-color: #d4edda; border-color: #c3e6cb; padding: 15px; border-radius: 4px; margin-bottom: 20px; }
+textarea { width: 100%; height: 180px; font-family: 'Consolas', 'Monaco', monospace; padding: 12px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; background: #fdfdfd; font-size: 13px; }
+.instruction { background: #e7f5ff; padding: 20px; border-left: 5px solid #007BFF; margin-bottom: 25px; border-radius: 4px; }
+.row { display: flex; gap: 30px; flex-wrap: wrap; }
+.col { flex: 1; min-width: 300px; }
+small { color: #666; font-size: 0.85em; }
+
+/* Inline replacements */
+.btn-wrapper { text-align: center; margin-top: 40px; }
+.btn-admin { background: #28a745; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; }
+.btn-public { background: #6c757d; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; margin-left: 15px; font-weight: bold; }
+.warning-text { text-align: center; color: #dc3545; font-weight: bold; margin-top: 30px; }
+.checkbox-wrapper { margin-top: 20px; }
+.checkbox-label { display:inline-block; font-weight:normal; }

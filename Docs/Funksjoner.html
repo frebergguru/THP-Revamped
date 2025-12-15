@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>The Hypnotize Project - Functions overview</title>
+<link rel="stylesheet" type="text/css" href="css/Funksjoner.css">
+</head>
+<body>
+<div align="center">
+<h2>The Hypnotize Project - Functions overview</h2>
+<hr align="center">
+
+<h2>Core Functions</h2>
+<div class="table-container">
+    <div class="table-row table-header">
+        <div class="table-cell">Funksjon</div>
+        <div class="table-cell">Parametere</div>
+        <div class="table-cell">Returtype</div>
+        <div class="table-cell">Beskrivelse</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">srverror</div>
+        <div class="table-cell">$err, $msg</div>
+        <div class="table-cell">void (output)</div>
+        <div class="table-cell">Viser en server feilmeldings boks med en filekode/tittel og en feilmeldingstekst.</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">msg</div>
+        <div class="table-cell">$headline, $text</div>
+        <div class="table-cell">void (output)</div>
+        <div class="table-cell">Viser en generisk meldingsboks med overskrift og innhold.</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">mysqldie</div>
+        <div class="table-cell">$message</div>
+        <div class="table-cell">void (die)</div>
+        <div class="table-cell">Lukker databasetilkoblingen hvis den er aktiv, og avslutter skriptkjøringen med den oppgitte meldingen sammen med den siste MySQL-feilen.</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">chchar</div>
+        <div class="table-cell">$string</div>
+        <div class="table-cell">string</div>
+        <div class="table-cell">Renser en streng med htmlspecialchars (ISO-8859-1) og erstatter spesifikke tegn (linjeskrift til &lt;br&gt;, og Skandinaviske tegn til HTML-enheter).</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">smilies</div>
+        <div class="table-cell">$text</div>
+        <div class="table-cell">string</div>
+        <div class="table-cell">Erstatter tekstbaserte emotikoner (f.eks. :), :D) med tilsvarende bildekoder.</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">parseurls</div>
+        <div class="table-cell">$string</div>
+        <div class="table-cell">string</div>
+        <div class="table-cell">Analyserer inndatastrengen for URL-er (http/https/ftp/www) og konverterer dem til trykkbare HTML-hyperlenker.</div>
+    </div>
+</div>
+<br>
+
+<h2>Kun administratorfunksjoner</h2>
+<div class="table-container">
+    <div class="table-row table-header">
+        <div class="table-cell">Funksjon</div>
+        <div class="table-cell">Parametere</div>
+        <div class="table-cell">Returtype</div>
+        <div class="table-cell">Beskrivelse</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">error</div>
+        <div class="table-cell">$msg</div>
+        <div class="table-cell">void (output)</div>
+        <div class="table-cell">Wrapper for msg(), viser en feilmelding med tittelen "Feil".</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">info</div>
+        <div class="table-cell">$msg</div>
+        <div class="table-cell">void (output)</div>
+        <div class="table-cell">Wrapper for msg(), viser en informasjonsmelding med tittelen "Informasjon".</div>
+    </div>
+</div>
+</div>
+</body>
+</html>

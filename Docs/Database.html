@@ -1,0 +1,312 @@
+<html>
+<head>
+<title>The Hypnotize Project - Databaseoversikt</title>
+<link rel="stylesheet" type="text/css" href="css/Database.css">
+</head>
+<body>
+<div align="center">
+<h2>The Hypnotize Project - Databaseoversikt</h2>
+<hr align="center">
+
+<h2>boxes</h2>
+<div class="table-container">
+    <div class="table-row table-header">
+        <div class="table-cell">Navn</div><div class="table-cell">Type</div><div class="table-cell">Tillat null</div><div class="table-cell">Standardverdi</div><div class="table-cell">Beskrivelse</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">id</div><div class="table-cell">int(11)</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Boksens ID</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">site</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">ID-en til kategorien du vil at teksten skal komme inn i</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">catid</div><div class="table-cell">int(11)</div><div class="table-cell">Nei</div><div class="table-cell">0</div><div class="table-cell">ID-en til kategorien du vil at teksten skal komme inn i</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">position</div><div class="table-cell">char(1)</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Hvor du vil at boksen skal komme ( l (venstre) , c (senter) eller r (h&oslash;yre) )</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">headline</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Toppteksten i boksen</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">uheadline</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Teksten som er under toppteksten</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">sort_id</div><div class="table-cell">int(10)</div><div class="table-cell">Ja</div><div class="table-cell">0</div><div class="table-cell">Hvor p&aring; siden du vil at den skal v&aelig;re (Opp og ned, bruker tall fra 0 - 9999999999 hvor 0 er på toppen og 1 er under 0 osv..)</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">link</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Linken som kommer nederst p&aring; boksen.</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">image</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">En link til bildet du vil bruke i boksen</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">module</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Navnet p&aring; modulen du vil bruke</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">allsites</div><div class="table-cell">int(11)</div><div class="table-cell">Ja</div><div class="table-cell">0</div><div class="table-cell">Plasser boksen på alle sider? (0 = Usant, 1 = Sant)</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">text</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Hovedteksten som vil komme i boksen</div>
+    </div>
+</div>
+<br>
+
+<h2>dvd</h2>
+<div class="table-container">
+    <div class="table-row table-header">
+        <div class="table-cell">Navn</div><div class="table-cell">Type</div><div class="table-cell">Tillat null</div><div class="table-cell">Standardverdi</div><div class="table-cell">Beskrivelse</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">id</div><div class="table-cell">int(11)</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">DVD-ens ID</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">producers</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Navn p&aring; produsenter</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">directors</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Navn p&aring; regiss&oslash;rer</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">manufacturer</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Navn p&aring; produsenten</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">rating</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Aldersgrense p&aring; filmen (Eksempel: PG-13)</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">dice</div><div class="table-cell">int(11)</div><div class="table-cell">Ja</div><div class="table-cell">0</div><div class="table-cell">Ditt terningkast p&aring; DVD-en</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">region</div><div class="table-cell">int(11)</div><div class="table-cell">Nei</div><div class="table-cell">0</div><div class="table-cell">DVD-ens region (0-6)</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">format</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Formatet til DVD-en (NTSC/PAL/SECAM)</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">genre</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Filmens sjanger (Eksempel: Action, Komedie)</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">title</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">DVD-ens tittel</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">actors</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Navn p&aring; skuespillere</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">year</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Filmens produksjons&aring;r</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">subtitles</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Undertekster som kan vises i filmen</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">screen</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Skjermtype (Eksempel: Widescreen 2.35:1 Anamorphic)</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">languages</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Spr&aring;k som kan snakkes</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">length</div><div class="table-cell">int(11)</div><div class="table-cell">Nei</div><div class="table-cell">0</div><div class="table-cell">Filmens lengde</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">comment</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">En egendefinert kommentar til filmen</div>
+    </div>
+</div>
+<br>
+
+<h2>guestbook</h2>
+<div class="table-container">
+    <div class="table-row table-header">
+        <div class="table-cell">Navn</div><div class="table-cell">Type</div><div class="table-cell">Tillat null</div><div class="table-cell">Standardverdi</div><div class="table-cell">Beskrivelse</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">id</div><div class="table-cell">int(11)</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Gjestebokmeldingens ID</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">name</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Navnet til personen som har skrevet i gjesteboken</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">ip</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">IP-en til personen som har skrevet i gjesteboken</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">date</div><div class="table-cell">date</div><div class="table-cell">Nei</div><div class="table-cell">0000-00-00</div><div class="table-cell">Datoen for n&aring;r personen la igjen en melding i gjesteboken</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">time</div><div class="table-cell">time</div><div class="table-cell">Nei</div><div class="table-cell">00:00:00</div><div class="table-cell">Tidspunktet for n&aring;r personen la igjen en melding i gjesteboken</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">mail</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">E-postadressen til personen som har skrevet en melding i gjesteboken</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">homepage</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">URL til hjemmesiden til personen som har skrevet en melding i gjesteboken</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">message</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Meldingen som personen skrev</div>
+    </div>
+</div>
+<br>
+
+<h2>links</h2>
+<div class="table-container">
+    <div class="table-row table-header">
+        <div class="table-cell">Navn</div><div class="table-cell">Type</div><div class="table-cell">Tillat null</div><div class="table-cell">Standardverdi</div><div class="table-cell">Beskrivelse</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">id</div><div class="table-cell">int(11)</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Linkens ID</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">name</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Sidens navn</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">ip</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">IP-en til personen som la til linken</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">date</div><div class="table-cell">date</div><div class="table-cell">Nei</div><div class="table-cell">0000-00-00</div><div class="table-cell">Datoen for når linken ble lagt til</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">time</div><div class="table-cell">time</div><div class="table-cell">Nei</div><div class="table-cell">00:00:00</div><div class="table-cell">Tidspunktet for når linken ble lagt til</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">description</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Beskrivelsen av linken</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">link</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">URL-en</div>
+    </div>
+</div>
+<br>
+
+<h2>menu</h2>
+<div class="table-container">
+    <div class="table-row table-header">
+        <div class="table-cell">Navn</div><div class="table-cell">Type</div><div class="table-cell">Tillat null</div><div class="table-cell">Standardverdi</div><div class="table-cell">Beskrivelse</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">id</div><div class="table-cell">int(11)</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Menylinkens ID</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">site_id</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Hvilken side det skal linkes til (index.php?site=site_id)</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">sitename</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Navnet til siden</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">sort_id</div><div class="table-cell">int(11)</div><div class="table-cell">Ja</div><div class="table-cell">0</div><div class="table-cell">Hvor i menyen du vil at den skal v&aerlig;re (Bruker tall fra 0 - 9999999999 hvor 0 er til &oslash;verst og 1 er ved under av 0 osv..)</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">break</div><div class="table-cell">int(1)</div><div class="table-cell">Ja</div><div class="table-cell">0</div><div class="table-cell">Sett inn link p&aring; ny linje (0 = nei, 1 = ja)</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">link</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">En ekstern url her</div>
+    </div>
+</div>
+<br>
+
+<h2>Admin</h2>
+<div class="table-container">
+    <div class="table-row table-header">
+        <div class="table-cell">Navn</div><div class="table-cell">Type</div><div class="table-cell">Tillat null</div><div class="table-cell">Standardverdi</div><div class="table-cell">Beskrivelse</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">id</div><div class="table-cell">int(11)</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Admin-elementets ID</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">standalone</div><div class="table-cell">int(11)</div><div class="table-cell">Ja</div><div class="table-cell">0</div><div class="table-cell">Er modulen en frittst&aring;ende modul? 0 = Nei 1 = Ja</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">module</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Navnet til modulmappen</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">module_name</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Navnet til modulen</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">module_menu_name</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Navnet som modulen vil f&aring; i menyen</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">module_site</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Modulens side-ID (?site=modulesite)</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">enable</div><div class="table-cell">int(1)</div><div class="table-cell">Nei</div><div class="table-cell">0</div><div class="table-cell">Er modulen aktivert?</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">site</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Sideidentifikator</div>
+    </div>
+</div>
+<br>
+
+<h2>users</h2>
+<div class="table-container">
+    <div class="table-row table-header">
+        <div class="table-cell">Navn</div><div class="table-cell">Type</div><div class="table-cell">Tillat null</div><div class="table-cell">Standardverdi</div><div class="table-cell">Beskrivelse</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">id</div><div class="table-cell">int(11)</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Brukerens ID</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">username</div><div class="table-cell">varchar(255)</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Brukernavnet</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">password</div><div class="table-cell">varchar(255)</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Passordet (hashet)</div>
+    </div>
+</div>
+<br>
+
+<h2>config</h2>
+<div class="table-container">
+    <div class="table-row table-header">
+        <div class="table-cell">Navn</div><div class="table-cell">Type</div><div class="table-cell">Tillat null</div><div class="table-cell">Standardverdi</div><div class="table-cell">Beskrivelse</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">id</div><div class="table-cell">int(11)</div><div class="table-cell">Nei</div><div class="table-cell">&nbsp;</div><div class="table-cell">Konfigurasjonsparameterens ID</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">title</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">The Hypnotize Project</div><div class="table-cell">Sidens tittel</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">pagename</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">The Hypnotize Project</div><div class="table-cell">Sidens navn</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">maintenance</div><div class="table-cell">int(1)</div><div class="table-cell">Ja</div><div class="table-cell">0</div><div class="table-cell">Er siden under oppdatering? 0 = Nei 1 = Ja</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">maintenanceip</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">10.0.0.6</div><div class="table-cell">IP-en til vedlikeholderen</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">dguestbook</div><div class="table-cell">int(1)</div><div class="table-cell">Ja</div><div class="table-cell">0</div><div class="table-cell">Deaktivere skriving i gjestebok? 0 = Nei 1 = Ja</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">dlinks</div><div class="table-cell">int(1)</div><div class="table-cell">Ja</div><div class="table-cell">0</div><div class="table-cell">Deaktivere skriving til linker? 0 = Nei 1 = Ja</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">siteurl</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">http://projects.lastnetwork.net/Stable/Hypnotize</div><div class="table-cell">Sidens url</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">backend_description</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">The Hypnotize Project</div><div class="table-cell">Beskrivelse av RSS-backend</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">backend_language</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">no-bokmaal</div><div class="table-cell">Spr&aring;ket til RSS-backend</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">images</div><div class="table-cell">text</div><div class="table-cell">&nbsp;</div><div class="table-cell">/Hypnotize/images</div><div class="table-cell">Stien til bildene (For vannmerking og lagring av bilder)</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">style</div><div class="table-cell">text</div><div class="table-cell">Nei</div><div class="table-cell">default</div><div class="table-cell">Stilen som skal brukes</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">smtp_host</div><div class="table-cell">varchar(255)</div><div class="table-cell">Ja</div><div class="table-cell">NULL</div><div class="table-cell">SMTP Vert</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">smtp_port</div><div class="table-cell">int(11)</div><div class="table-cell">Ja</div><div class="table-cell">25</div><div class="table-cell">SMTP Port</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">smtp_user</div><div class="table-cell">varchar(255)</div><div class="table-cell">Ja</div><div class="table-cell">NULL</div><div class="table-cell">SMTP Bruker</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">smtp_pass</div><div class="table-cell">varchar(255)</div><div class="table-cell">Ja</div><div class="table-cell">NULL</div><div class="table-cell">SMTP Passord</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">smtp_encryption</div><div class="table-cell">varchar(10)</div><div class="table-cell">Ja</div><div class="table-cell">NULL</div><div class="table-cell">SMTP Kryptering (ssl/tls)</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">admin_email</div><div class="table-cell">varchar(255)</div><div class="table-cell">Ja</div><div class="table-cell">NULL</div><div class="table-cell">Admin E-post</div>
+    </div>
+</div>
+</div>
+</body>
+</html>

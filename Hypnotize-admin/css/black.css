@@ -1,0 +1,284 @@
+/*
+    The Hypnotize Project is a Content Management System (CMS) that allows you to easily make your own webpage.
+
+    Copyright (C) 2004-2025  Hypnotize
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+    https://www.github.com/frebergguru/THP-Revamped
+*/
+
+A:link  {
+	text-decoration:none;
+	color:#CCCCCC;
+	border-bottom : 0px solid #FFFFFF;
+}
+A:visited {
+	text-decoration:none;
+	color:#CCCCCC;
+	border-bottom : 0px solid #FFFFFF;
+}
+A:hover {
+	color: #CCCCCC;
+	text-decoration: none;
+	border-bottom : 1px solid #FFFFFF;
+	border-top : 1px solid #FFFFFF;
+}
+A.under2:link {
+        text-decoration:none;
+        color:#000000;
+        border-bottom : 0px solid #FFFFFF;
+}
+A.under2:visited {
+        text-decoration:none;
+        color:#000000;
+        border-bottom : 0px solid #FFFFFF;
+}
+A.under2:hover {
+        color: #000000;
+        text-decoration: none;
+        border-bottom : 1px solid #FFFFFF;
+        border-top : 1px solid #FFFFFF;
+}
+A.over2:link {
+        color:#000000;
+        text-decoration:none;
+        border-bottom : 0px solid #FFFFFF;
+}
+A.over2:visited {
+        color:#000000;
+        text-decoration:none;
+        border-bottom : 0px solid #FFFFFF;
+}
+A.over2:hover {
+        color: #000000;
+        text-decoration: none;
+        border-bottom : 1px solid #FFFFFF;
+        border-top : 1px solid #FFFFFF;
+}
+A.menu:link {
+        color:#000000;
+        text-decoration:none;
+        border-bottom : 0px solid #FFFFFF;
+}
+A.menu:visited {
+        color:#000000;
+        text-decoration:none;
+        border-bottom : 0px solid #FFFFFF;
+}
+A.menu:hover {
+        color: #000000;
+        text-decoration: none;
+        border-bottom : 1px solid #FFFFFF;
+        border-top : 1px solid #FFFFFF;
+}
+body {
+	background-color: #000000;
+	color: #CCCCCC;
+}
+.over {
+	background-color: #000000;
+	color: #FFFFFF;
+	font-size: 50px;
+}
+.menu {
+	background-color: #CCCCCC;
+	color: #000000;
+}
+.round {
+	background-color: #000000;
+	color: #CCCCCC;
+}
+.over2 {
+	background-color: #CCCCCC;
+	color: #000000;
+}
+.under {
+	background-color: #000000;
+	color: #CCCCCC;
+}
+.under2 {
+        background-color: #CCCCCC;
+        color: #000000;
+}
+input {
+        border: 1px;
+        background-color: #CCCCCC;
+        font-size: 12px;
+        color: #000000;
+        font-weight: bold;
+        border-color: #CCCCCC;
+        border-style: solid;
+}
+textarea {
+        border: 1px;
+        background-color: #CCCCCC;
+        font-size: 12px;
+        color: #000000;
+        font-weight: bold;
+        border-color: #CCCCCC;
+        border-style: solid;
+}
+select {
+	border: 1px;
+	background-color: #CCCCCC;
+	font-size: 12px;
+	color: #000000;
+	font-weight: bold;
+	border-color: #CCCCCC;
+	border-style: solid;
+}
+
+/* Flexbox Layout & Mobile Support */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.left-column, .right-column {
+    flex: 1;
+    min-width: 200px;
+}
+.center-column {
+    flex: 2;
+    min-width: 300px;
+}
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+}
+
+/* New Content Box Styles (Matching Black Theme) */
+.header {
+    background-color: #000000; /* Matches .over */
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #CCCCCC;
+}
+
+.footer {
+    background-color: #000000; /* Matches .round */
+    color: #CCCCCC;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+    border: 1px solid #333;
+}
+
+.box {
+    background-color: #CCCCCC; /* Border color for black theme boxes (reversed logic from default) or just Keep it black? Old code used 000 table bg with cccccc/000000 cells. To get a border effect on black background, we need a lighter container background if padding is 1px */
+    padding: 1px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+/* Wait, in black theme: body is #000000.
+   Outer table was bgcolor="#000000". Inner cells were .over2 (#CCCCCC) and .under (#000000).
+   If outer table is black and body is black, you don't see a border unless cellspacing > 0 reveals the background... wait.
+   In HTML tables, bgcolor on table shows through cellspacing.
+   If body is black, and table is black, cellspacing reveals black. So no border visible?
+   Unless the cells are lighter.
+   .over2 is #CCCCCC (Light Gray). .under is #000000 (Black).
+   So the Header (.over2) will be a gray bar. The content (.under) will be a black box.
+   The gap between them (cellspacing) will be black.
+   So it looks like: [Gray Bar] [Black Space] [Black Content].
+   Effectively, just a gray header and black content on a black background.
+
+   Let's set .box background to #000000 (transparent effectively) or #333 for subtle border.
+   Actually, let's look at `black.css` again.
+   .under is #000000.
+   So content is black on black? Yes, text is #CCCCCC.
+
+   If I set .box background to #333333 (Dark Gray), then the 1px padding will create a thin dark gray border around the gray header and black content. That sounds nice.
+*/
+.box {
+    background-color: #333333;
+    padding: 1px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.box-header {
+    background-color: #CCCCCC; /* Matches .over2 */
+    color: #000000;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.box-content {
+    background-color: #000000; /* Matches .under */
+    color: #CCCCCC;
+    padding: 5px;
+}
+
+/* Flexbox Table Replacements */
+.flex-table {
+    display: flex;
+    flex-direction: column;
+    border: 0px solid #000000;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #333333; /* Outer border color simulation */
+    padding: 1px; /* Creates the outer 1px border */
+    gap: 1px; /* Gap acts as border between cells */
+    box-sizing: border-box; /* Ensures padding doesn't increase total width */
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: #000000;
+}
+
+.flex-cell {
+    flex: 1;
+    padding: 3px;
+    background-color: #000000; /* Default cell background */
+    color: #CCCCCC;
+}
+
+.flex-header {
+    background-color: #CCCCCC; /* Matches .over2 */
+    color: #000000;
+    font-weight: bold;
+    padding: 3px;
+    width: 100%;
+}
+
+.flex-content {
+    background-color: #000000; /* Matches .under */
+    color: #CCCCCC;
+    padding: 3px;
+    width: 100%;
+}
+
+.flex-content.under2 {
+    background-color: #CCCCCC;
+    color: #000000;
+}
+
+/* Fix overflow issues causing missing right border */
+.flex-header, .flex-content, .flex-row, .flex-cell {
+    width: auto;
+    box-sizing: border-box;
+}

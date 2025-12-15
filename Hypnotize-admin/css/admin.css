@@ -1,0 +1,176 @@
+/*
+    The Hypnotize Project is a Content Management System (CMS) that allows you to easily make your own webpage.
+
+    Copyright (C) 2004-2025  Hypnotize
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+    https://www.github.com/frebergguru/THP-Revamped
+*/
+
+A:link  {
+        text-decoration:none;
+        border-bottom : 1px solid #000000;
+}
+A:visited {
+        text-decoration:none;
+        border-bottom : 1px solid #000000;
+}
+A:hover {
+        text-decoration: none;
+        border-bottom : 1px solid #000000;
+        border-top : 1px solid #000000;
+        background-color: #FFF000;
+}
+body {
+	background-color: #FFFFFF;
+}
+.menu {
+        background-color: #CCCCCC;
+        color: #000000;
+}
+.over {
+	background-color: #FFFFFF;
+	color: #000000;
+	font-size: 50px;
+}
+.round {
+	background-color: #DEDEDE;
+	color: #000000;
+}
+.over2 {
+	background-color: #CCCCCC;
+	color: #000000;
+}
+.under {
+	background-color: #FFFFFF;
+	color: #000000;
+}
+.under2 {
+	background-color: #CCCCCC;
+	color: #000000;
+}
+
+/* Flexbox Layout & Mobile Support */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.left-column, .right-column {
+    flex: 1;
+    min-width: 200px;
+}
+.center-column {
+    flex: 2;
+    min-width: 300px;
+}
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+}
+
+/* New Content Box Styles (Matching Default/Admin Theme) */
+.header {
+    background-color: #FFFFFF; /* Matches .over */
+    color: #000000;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #000000;
+}
+
+.footer {
+    background-color: #DEDEDE; /* Matches .round */
+    color: #000000;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.box {
+    background-color: #000000;
+    padding: 1px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.box-header {
+    background-color: #CCCCCC; /* Matches .over2 */
+    color: #000000;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.box-content {
+    background-color: #FFFFFF; /* Matches .under */
+    color: #000000;
+    padding: 5px;
+}
+
+/* Flexbox Table Replacements */
+.flex-table {
+    display: flex;
+    flex-direction: column;
+    border: 0px solid #000000;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #000000; /* Outer border color simulation */
+    padding: 1px; /* Creates the outer 1px border */
+    gap: 1px; /* Gap acts as border between cells */
+    box-sizing: border-box; /* Ensures padding doesn't increase total width */
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: #CCCCCC;
+}
+
+.flex-cell {
+    flex: 1;
+    padding: 3px;
+    background-color: #FFFFFF; /* Default cell background - Admin uses white */
+}
+
+.flex-header {
+    background-color: #CCCCCC; /* Matches .over2 */
+    color: #000000;
+    font-weight: bold;
+    padding: 3px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.flex-content {
+    background-color: #FFFFFF; /* Matches .under - Admin uses white */
+    color: #000000;
+    padding: 3px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.flex-content.under2 {
+    background-color: #CCCCCC;
+}
+
+.width-200 { width: 200px; }

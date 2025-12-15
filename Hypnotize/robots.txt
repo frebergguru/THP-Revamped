@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /includes/
+Disallow: /maintenance.php
+Disallow: /RSS/
+Disallow: /images/
+Disallow: /Modules/
