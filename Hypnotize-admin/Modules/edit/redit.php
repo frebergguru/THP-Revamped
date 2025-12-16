@@ -46,6 +46,9 @@ if ($action=="RMoveUp") {
 	mysqli_query($mlink, "INSERT INTO `boxes` ( `site` , `catid` , `position` , `headline` , `uheadline` , `link` , `text`, `image`, `module`, `sort_id`, `allsites` ) VALUES ('$id2', '$id2', 'r', '$editheadline', '$edituheadline', '$editlink', '$edittext', '', '', '$new_sort_id', '$editallsites')") or mysqldie("Kan ikke skrive til $database.boxes");
 //else if $action is like "RAddedI" then
 } elseif ($action=="RAddedI") {
+    if (check_post_max_size_exceeded()) {
+        // Error handling done in function
+    } else {
 	$editimage_select = isset($_POST["image_select"]) ? mysqli_real_escape_string($mlink, $_POST["image_select"]) : '';
 	//if $editheadline is empty then
 	if(empty($editheadline)) {
@@ -68,8 +71,12 @@ if ($action=="RMoveUp") {
 			error('Valgt bilde finnes ikke.');
 		}
 	} elseif (($_FILES["image"]["type"] == "image/gif") or ($_FILES["image"]["type"] == "image/jpeg") or ($_FILES["image"]["type"] == "image/png"))
-    {	//if a error has occured then
-        if ($_FILES["image"]["error"] > 0)
+    {
+        if (!check_file_size($_FILES["image"])) {
+            error('Filen er for stor. Maks størrelse er '.format_bytes(get_max_upload_limit()).'.');
+        }
+    	//if a error has occured then
+        elseif ($_FILES["image"]["error"] > 0)
         {	//print out a error message
             error('Det skjedde en feil: '.$_FILES["image"]["error"]);
         } else {//else set $imagefile to $_SERVER["DOCUMENT_ROOT"]/$images/$_FILES["image"]["name"]
@@ -100,6 +107,7 @@ if ($action=="RMoveUp") {
         } else {
 		     error('Du m&aring; velge et bilde eller laste opp et nytt.');
         }
+    }
     }
 //else if $action == "RAddI" then 
 } elseif ($action=="RAddI") {

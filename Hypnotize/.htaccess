@@ -1,0 +1,24 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+#Håndtering av feilkoder
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php?error=404 [L,QSA]
+ErrorDocument 401 /THP/Hypnotize/index.php?error=401
+ErrorDocument 500 /THP/Hypnotize/index.php?error=500
+ErrorDocument 503 /THP/Hypnotize/index.php?error=503
+
+#Påkrev HTTPS
+#RewriteCond %{HTTPS} !=on
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+#Fjern etterfølgende skråstreker fra URL‑er (med unntak av kataloger)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ $1 [L,R=301]
+
+#Forby kataloglisting
+Options -Indexes
+
+#Sett standard tegnsett
+AddDefaultCharset UTF-8

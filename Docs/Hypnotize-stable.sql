@@ -34,6 +34,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL auto_increment,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `uuid` varchar(36) default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
@@ -126,6 +127,7 @@ CREATE TABLE `config` (
   `smtp_pass` varchar(255) default NULL,
   `smtp_encryption` varchar(10) default NULL,
   `admin_email` varchar(255) default NULL,
+  `watermark` int(1) NOT NULL default '1',
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 SET character_set_client = @saved_cs_client;
@@ -136,7 +138,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `config` WRITE;
 /*!40000 ALTER TABLE `config` DISABLE KEYS */;
-INSERT INTO `config` VALUES (1,'The Hypnotize Project','The Hypnotize Project',0,'',0,0,'https://','','','/images','default', NULL, 25, NULL, NULL, NULL, NULL);
+INSERT INTO `config` VALUES (1,'The Hypnotize Project','The Hypnotize Project',0,'',0,0,'https://','','','/images','default', NULL, 25, NULL, NULL, NULL, NULL, 1);
 /*!40000 ALTER TABLE `config` ENABLE KEYS */;
 UNLOCK TABLES;
 

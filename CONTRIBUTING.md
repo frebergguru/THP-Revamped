@@ -1,23 +1,23 @@
-# Bidra
+# Contributing
 
-Vi ønsker bidrag til The Hypnotize Project velkommen!
+We welcome contributions to The Hypnotize Project!
 
-## Regler & Retningslinjer
+## Rules & Guidelines
 
-### 1. Layout Integritet
-**KRITISK:** IKKE endre layoutstrukturen. Prosjektet avhenger av en spesifikk Flexbox- og CSS-implementasjon. Å legge til funksjonalitet bør skje *innenfor* eksisterende containere, ikke ved å gjøre om på designet til siden.
+### 1. Layout Integrity
+**CRITICAL:** Do NOT change the layout structure. The project relies on a specific Flexbox and CSS implementation. Adding functionality should happen *within* existing containers, not by reshaping the page.
 
-### 2. Kodestil
-*   **PHP:** Bruk standard PHP-tagger `<?php`.
-*   **Utdata:** Saner alltid utdata med `htmlspecialchars` for å forhindre XSS.
-*   **Database:** Bruk `mysqli`. Ikke bruk utdaterte `mysql_*`-funksjoner.
-*   **Variabler:** Initialiser variabler før bruk for å unngå `Undefined variable`-advarsler.
+### 2. Code Style
+*   **PHP:** Use standard PHP tags `<?php`.
+*   **Output:** Always sanitize output with `htmlspecialchars` to prevent XSS.
+*   **Database:** Use `mysqli`. Do not use deprecated `mysql_*` functions.
+*   **Variables:** Initialize variables before use to avoid `Undefined variable` warnings.
 
-### 3. Kompatibilitet
-*   Sørg for at koden fungerer på standard LAMP-stakker.
-*   Unngå å legge til harde avhengigheter til spesifikke PHP-utvidelser, hvis en reserveløsning kan skrives (f.eks. `curl` vs `stream_context`).
+### 3. Compatibility
+*   Ensure code works on standard LAMP stacks.
+*   Avoid adding hard dependencies on specific PHP extensions if a fallback can be written (e.g., `curl` vs `stream_context`).
 
-### 4. Innleveringsprosess
-1.  Gjør endringene dine.
-2.  Test grundig.
-3.  Send inn en Pull Request med en tydelig beskrivelse av funksjonen eller rettelsen.
+### 4. Submission Process
+1.  Make your changes.
+2.  Test thoroughly.
+3.  Submit a Pull Request with a clear description of the feature or fix.

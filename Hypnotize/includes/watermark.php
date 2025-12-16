@@ -32,6 +32,17 @@ $bilde_fil = $_SERVER["DOCUMENT_ROOT"].$images.'/'.$bilde_fil;
 $skrift = '../fonts/manuscript.ttf';
 $mtype = mime_content_type($bilde_fil);
 
+// Optimization: If watermark disabled, just stream the file
+if (isset($watermark) && $watermark == 0) {
+    if ($mtype != "image/jpeg" && $mtype != "image/gif" && $mtype != "image/png") {
+        print "Ukjent bilde format!";
+        return 0;
+    }
+    header("Content-type: " . $mtype);
+    readfile($bilde_fil);
+    exit;
+}
+
 if($mtype=="image/jpeg") $bilde=@imagecreatefromjpeg("$bilde_fil");
 elseif ($mtype=="image/gif") $bilde=@imagecreatefromgif("$bilde_fil"); 
 elseif ($mtype=="image/png") $bilde=@imagecreatefrompng("$bilde_fil");

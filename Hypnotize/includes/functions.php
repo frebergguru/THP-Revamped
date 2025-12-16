@@ -19,19 +19,6 @@
 
     https://www.github.com/frebergguru/THP-Revamped
 */
-//START SRVERROR FUNCTION
-function srverror($err,$msg) {
-print '<div class="flex-table">
-    <div class="flex-header">
-        <font size="2" face="Arial"><strong>ERROR: '.$err.'</strong></font>
-    </div>
-    <div class="flex-content">
-        '.$msg.'
-    </div>
-</div>
-<br>';
-};
-//STOP SERVERROR FUNCTION
 
 //START MSG FUNCTION
 function msg($headline,$text) {

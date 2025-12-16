@@ -39,13 +39,14 @@ $smtp_user = isset($_POST["smtp_user"]) ? mysqli_real_escape_string($mlink, $_PO
 $smtp_pass = isset($_POST["smtp_pass"]) ? mysqli_real_escape_string($mlink, $_POST["smtp_pass"]) : '';
 $smtp_encryption = isset($_POST["smtp_encryption"]) ? mysqli_real_escape_string($mlink, $_POST["smtp_encryption"]) : '';
 $admin_email = isset($_POST["admin_email"]) ? mysqli_real_escape_string($mlink, $_POST["admin_email"]) : '';
+$watermark = isset($_POST["watermark"]) ? (int) $_POST["watermark"] : 1;
 
 
 $save = isset($_GET["save"]) ? (int) $_GET["save"] : 0;
 //if $save is 1 then
 if ($save == "1") {
 	//update the table config
-	$query_string ="UPDATE `config` SET `title` = '$title',`pagename` = '$pagename',`maintenance` = '$maintenance',`maintenanceip` = '$maintenanceip',`dguestbook` = '$dguestbook',`dlinks` = '$dlinks',`siteurl` = '$siteurl',`backend_description` = '$backend_description',`backend_language` = '$backend_language',`images` = '$images',`style` = '$style_setting', `smtp_host` = '$smtp_host', `smtp_port` = '$smtp_port', `smtp_user` = '$smtp_user', `smtp_pass` = '$smtp_pass', `smtp_encryption` = '$smtp_encryption', `admin_email` = '$admin_email';";
+	$query_string ="UPDATE `config` SET `title` = '$title',`pagename` = '$pagename',`maintenance` = '$maintenance',`maintenanceip` = '$maintenanceip',`dguestbook` = '$dguestbook',`dlinks` = '$dlinks',`siteurl` = '$siteurl',`backend_description` = '$backend_description',`backend_language` = '$backend_language',`images` = '$images',`style` = '$style_setting', `smtp_host` = '$smtp_host', `smtp_port` = '$smtp_port', `smtp_user` = '$smtp_user', `smtp_pass` = '$smtp_pass', `smtp_encryption` = '$smtp_encryption', `admin_email` = '$admin_email', `watermark` = '$watermark';";
 	mysqli_query($mlink, "$query_string") or mysqldie("Kan ikke skrive til $database.config");
 	//print out a information box with the text "Innstillingene er n&aring; lagret!"
 	info("Innstillingene er n&aring; lagret!");
@@ -67,6 +68,7 @@ $backend_description = stripslashes($row["backend_description"]);
 $backend_language = stripslashes($row["backend_language"]);
 $images = $row["images"];
 $style_setting = htmlspecialchars(stripslashes($row["style"]), ENT_QUOTES, 'ISO-8859-1');
+$watermark = $row["watermark"] ?? 1;
 
 // Mail
 $smtp_host = stripslashes($row["smtp_host"] ?? '');
@@ -126,6 +128,12 @@ print '<div class="flex-table">
         <strong>Hvor ligger bildene p&aring; web serveren ?</strong><br>
         Eks: Hvis bildene ligger p&aring; <strong>http://example.com/bilder</strong> s&aring; skriver du <strong>/bilder</strong> i formen under:<br>
         <input type="text" name="images" value="'.htmlspecialchars($images, ENT_QUOTES).'" size="30"><br>
+        <br>
+        <strong>Vannmerke p&aring; bilder:</strong><br>
+        <select name="watermark">
+        <option value="0"'; if($watermark=="0"){print 'selected';}; print '> Nei
+        <option value="1"'; if($watermark=="1"){print 'selected';}; print '> Ja
+        </select><br>
         <br>
         <hr>
         <h3>Mail Innstillinger (SMTP)</h3>

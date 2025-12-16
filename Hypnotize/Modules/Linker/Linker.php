@@ -49,7 +49,7 @@ print '<div class="flex-table">
         <strong>Beskrivelse:</strong> '.chchar($description).'<br>
         <strong>Link:</strong> <a href="'.$link2.'" target="_blank">'.chchar($link2).'</a><br>
         <br>
-        <a href="'.$_SERVER["PHP_SELF"].'?site='.$site.'&amp;style='.$style.'">Trykk her for &aring; g&aring; tilbake til Linker!</a>
+        <a href="'.rtrim($siteurl, '/').'/?site='.$site.'&amp;style='.$style.'">Trykk her for &aring; g&aring; tilbake til Linker!</a>
         </font>
     </div>
 </div>
@@ -66,7 +66,7 @@ print '<div class="flex-table">
         </font>
     </div>
     <div class="flex-content">
-        <form action="'.$_SERVER["PHP_SELF"].'?site='.$site.'&amp;style='.$style.'" method="post">
+        <form action="'.rtrim($siteurl, '/').'/?site='.$site.'&amp;style='.$style.'" method="post">
         <font size="2">';
 //if $description and $link2 not is empty an $link2 not is like "https://" and md5($number) not is like ($_SESSION['image_random_value'] ?? '') then
 if (!empty($description) && !empty($link2) && $link2 != "https://" && md5($number) != ($_SESSION['image_random_value'] ?? '')){

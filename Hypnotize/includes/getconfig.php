@@ -45,4 +45,6 @@ $backend_language = htmlspecialchars(stripslashes($row["backend_language"]), ENT
 $images = htmlspecialchars($row["images"], ENT_QUOTES, 'ISO-8859-1');
 //get the style
 $style = htmlspecialchars(stripslashes($row["style"]), ENT_QUOTES, 'ISO-8859-1');
+//get the watermark status
+$watermark = $row["watermark"] ?? 1;
 ?>

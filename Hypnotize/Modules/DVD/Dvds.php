@@ -125,7 +125,7 @@ print '<div class="flex-table">
     </div>
     <div class="flex-content">
         <font size="2">
-        Sorter etter <a href="'.$_SERVER["PHP_SELF"].'?site=DVD&amp;sort=t&amp;order='.$title_order.'"><strong>Tittel</strong></a> || <a href="'.$_SERVER["PHP_SELF"].'?site=DVD&amp;sort=y&amp;order='.$year_order.'"><strong>&Aring;r</strong></a>
+        Sorter etter <a href="'.rtrim($siteurl, '/').'/?site=DVD&amp;sort=t&amp;order='.$title_order.'"><strong>Tittel</strong></a> || <a href="'.rtrim($siteurl, '/').'/?site=DVD&amp;sort=y&amp;order='.$year_order.'"><strong>&Aring;r</strong></a>
         </font>
     </div>
 </div>

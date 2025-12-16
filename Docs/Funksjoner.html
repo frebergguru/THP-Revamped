@@ -17,12 +17,6 @@
         <div class="table-cell">Beskrivelse</div>
     </div>
     <div class="table-row">
-        <div class="table-cell">srverror</div>
-        <div class="table-cell">$err, $msg</div>
-        <div class="table-cell">void (output)</div>
-        <div class="table-cell">Viser en server feilmeldings boks med en filekode/tittel og en feilmeldingstekst.</div>
-    </div>
-    <div class="table-row">
         <div class="table-cell">msg</div>
         <div class="table-cell">$headline, $text</div>
         <div class="table-cell">void (output)</div>
@@ -32,7 +26,7 @@
         <div class="table-cell">mysqldie</div>
         <div class="table-cell">$message</div>
         <div class="table-cell">void (die)</div>
-        <div class="table-cell">Lukker databasetilkoblingen hvis den er aktiv, og avslutter skriptkjøringen med den oppgitte meldingen sammen med den siste MySQL-feilen.</div>
+        <div class="table-cell">Lukker databasetilkoblingen hvis den er aktiv, og avslutter skriptkj&oslash;ringen med den oppgitte meldingen sammen med den siste MySQL-feilen.</div>
     </div>
     <div class="table-row">
         <div class="table-cell">chchar</div>
@@ -74,6 +68,36 @@
         <div class="table-cell">$msg</div>
         <div class="table-cell">void (output)</div>
         <div class="table-cell">Wrapper for msg(), viser en informasjonsmelding med tittelen "Informasjon".</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">check_file_size</div>
+        <div class="table-cell">$file, $max_size (optional)</div>
+        <div class="table-cell">bool</div>
+        <div class="table-cell">Sjekker om en fil lastet opp er innenfor st&oslash;rrelsesgrensen. Bruker serverens grenser hvis $max_size ikke er satt.</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">check_post_max_size_exceeded</div>
+        <div class="table-cell">Ingen</div>
+        <div class="table-cell">bool</div>
+        <div class="table-cell">Sjekker om opplastingen (POST) overskred serverens post_max_size. Hvis ja, vises en feilmelding og funksjonen returnerer true.</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">get_max_upload_limit</div>
+        <div class="table-cell">Ingen</div>
+        <div class="table-cell">int</div>
+        <div class="table-cell">Returnerer den effektive grensen for filopplasting i bytes (minste av upload_max_filesize og post_max_size).</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">return_bytes</div>
+        <div class="table-cell">$val</div>
+        <div class="table-cell">int</div>
+        <div class="table-cell">Konverterer en PHP ini-st&oslash;rrelsesverdi (f.eks. '2M', '1G') til bytes.</div>
+    </div>
+    <div class="table-row">
+        <div class="table-cell">format_bytes</div>
+        <div class="table-cell">$size</div>
+        <div class="table-cell">string</div>
+        <div class="table-cell">Formaterer en byte-verdi til en lesbar streng (B, KB, MB, GB).</div>
     </div>
 </div>
 </div>

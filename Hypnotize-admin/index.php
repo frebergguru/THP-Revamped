@@ -46,6 +46,10 @@ include 'includes/functions.php';
 
 //Logout logic
 if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+    if (isset($_SESSION['admin_user'])) {
+        $u_logout = mysqli_real_escape_string($mlink, $_SESSION['admin_user']);
+        mysqli_query($mlink, "UPDATE users SET uuid=NULL WHERE username='$u_logout'");
+    }
     session_destroy();
     header("Location: index.php");
     exit();
@@ -54,6 +58,32 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 //Login check
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
     include 'includes/login_form.php';
+    exit();
+}
+
+// Security Check: Verify UUID
+if (isset($_SESSION['admin_user']) && isset($_SESSION['admin_uuid'])) {
+    $u_check = mysqli_real_escape_string($mlink, $_SESSION['admin_user']);
+    $uuid_check = mysqli_real_escape_string($mlink, $_SESSION['admin_uuid']);
+
+    $res_check = mysqli_query($mlink, "SELECT uuid FROM users WHERE username='$u_check' LIMIT 1");
+    if ($row_check = mysqli_fetch_array($res_check)) {
+        if ($row_check['uuid'] !== $uuid_check) {
+            // Session mismatch (e.g. logged in elsewhere)
+            session_destroy();
+            header("Location: index.php");
+            exit();
+        }
+    } else {
+        // User not found
+        session_destroy();
+        header("Location: index.php");
+        exit();
+    }
+} else {
+    // Missing UUID in session but logged in? Force logout.
+    session_destroy();
+    header("Location: index.php");
     exit();
 }
 

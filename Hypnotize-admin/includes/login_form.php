@@ -20,6 +20,7 @@
     https://www.github.com/frebergguru/THP-Revamped
  */
 
+
 if (isset($_POST['submit_login'])) {
     $u = mysqli_real_escape_string($mlink, $_POST['username']);
     $p = $_POST['password'];
@@ -27,8 +28,16 @@ if (isset($_POST['submit_login'])) {
     $res = mysqli_query($mlink, "SELECT * FROM users WHERE username='$u' LIMIT 1");
     if ($row = mysqli_fetch_array($res)) {
         if (password_verify($p, $row['password'])) {
+            // Generate dynamic UUID
+            $uuid = bin2hex(random_bytes(16));
+
+            // Update user record with UUID
+            mysqli_query($mlink, "UPDATE users SET uuid='$uuid' WHERE id=" . $row['id']);
+
             $_SESSION['admin_logged_in'] = true;
             $_SESSION['admin_user'] = $row['username'];
+            $_SESSION['admin_uuid'] = $uuid;
+
             header("Location: index.php");
             exit;
         } else {

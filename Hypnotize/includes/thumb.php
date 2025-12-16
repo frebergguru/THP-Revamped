@@ -71,8 +71,10 @@ $graa = imagecolorallocate($dest, 128, 128, 128);
 $roed = imagecolorallocate($dest, 255, 0, 0);
 $gul = imagecolorallocate($dest, 255, 255, 0);
 
-imagettftext($dest, 12, 0, 12, $y-7, $svart, $skrift, $pagename);
-imagettftext($dest, 12, 0, 10, $y-8, $roed, $skrift, $pagename);
+if (!isset($watermark) || $watermark == 1) {
+    imagettftext($dest, 12, 0, 12, $y-7, $svart, $skrift, $pagename);
+    imagettftext($dest, 12, 0, 10, $y-8, $roed, $skrift, $pagename);
+}
 
 if($mtype=="image/gif") 
 {

@@ -59,8 +59,12 @@ while ($row = mysqli_fetch_array($result))
 };
 //if $status not is like 1 then
 if ($status != "1") {
+    // Get max sort_id
+    $res = mysqli_query($mlink, "SELECT MAX(sort_id) as max_sort FROM menu");
+    $row = mysqli_fetch_array($res);
+    $new_sort_id = $row['max_sort'] + 1;
 	//insert the new site name to the table menu, die if a error occure
-	mysqli_query($mlink, "INSERT INTO `menu` (`site_id`, `sitename`, `link`, `break`) VALUES ('', '$cat', '$url', '$break')") or mysqldie("Kan ikke skrive til $database.menu");
+	mysqli_query($mlink, "INSERT INTO `menu` (`site_id`, `sitename`, `link`, `break`, `sort_id`) VALUES ('', '$cat', '$url', '$break', '$new_sort_id')") or mysqldie("Kan ikke skrive til $database.menu");
 	//print out a info box with the text ("Siden $cat er naa lagt til!")
 	info('Siden "'.chchar($cat).'" er n&aring; lagt til!');
 };

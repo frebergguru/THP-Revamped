@@ -27,7 +27,7 @@ print '<div class="flex-table">
 </font>
 </div>
 <div class="flex-content under">
-<form action="'.$_SERVER["PHP_SELF"].'?site='."$site".'&amp;style='."$style".'" method="post">
+<form action="'.rtrim($siteurl, '/').'/?site='."$site".'&amp;style='."$style".'" method="post">
 <input type="text" name="search" size="30"><br>
 <br>
 <input type="submit" value="S&oslash;k"> || <input type="reset" value="Nullstill">

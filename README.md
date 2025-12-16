@@ -1,34 +1,37 @@
-# The Hypnotize Project - Revamped
+# The Hypnotize Project - Rebooted
 
-The Hypnotize Project (THP) er et publiseringssystem (CMS) designet for å hjelpe deg med å enkelt lage og administrere ditt eget nettsted.
+The Hypnotize Project (THP) is a lightweight, classic Content Management System (CMS) designed to help you easily build and manage your own website.
 
-Dette depotet representerer en oppusset versjon av det originale prosjektet, med fokus på å modernisere kodebasen samtidig som den klassiske funksjonaliteten bevares.
+This repository represents a "rebooted" version of the original project, focusing on modernizing the codebase while preserving its classic functionality.
 
-## Viktige endringer i Revamped
-*   **Moderne PHP-støtte:** Erstattet foreldede `mysql_*`-funksjoner med `mysqli_*`.
-*   **Sikkerhetsforbedringer:** Adressert diverse sikkerhetssårbarheter (XSS, SQL Injection).
-*   **Layout-modernisering:** Erstattet gamle tabellbaserte layouter med CSS Flexbox og laget den mobilvennlig.
-*   **Nye Funksjoner:** Lagt til IMDb-integrasjon for DVD-modulen.
+## Key Changes in Reboot
+*   **Modern PHP Support:** Replaced obsolete `mysql_*` functions with `mysqli_*`.
+*   **Security Improvements:** Addressed various security vulnerabilities (XSS, SQL Injection).
+*   **Layout Modernization:** Replaced old table-based layouts with CSS Flexbox.
+*   **New Features:** Added IMDb integration for the DVD module.
 
-## Funksjoner
-*   **Modulær Arkitektur:** Inkluderer moduler for DVD-samling, Gjestebok, Linker, og mer.
-*   **Dobbelt Grensesnitt:**
-    *   **Bruker UI:** Ligger i `Hypnotize/` - Det offentlige nettstedet.
-    *   **Admin UI:** Ligger i `Hypnotize-admin/` - Administrasjonsportalen.
-*   **DVD-håndtering:** En spesialisert modul for katalogisering av DVD-er med automatisk henting av IMDb-data.
-*   **Tilpassbar:** Støtter temaer og tilpassede konfigurasjoner.
+## Features
+*   **Modular Architecture:** Includes modules for DVD collection, Guestbook, Links, and more.
+*   **Dual Interface:**
+    *   **User UI:** Located in `Hypnotize/` - The public-facing website.
+    *   **Admin UI:** Located in `Hypnotize-admin/` - The backend for content management.
+*   **DVD Management:** specialized module for cataloging DVDs with automatic IMDb data fetching.
+*   **Customizable:** Supports themes and custom configurations.
 
-## Kom i Gang
+## Getting Started
 
-Se [INSTALL.md](INSTALL.md) for detaljerte installasjons- og oppsettsinstruksjoner.
+See [INSTALL.md](INSTALL.md) for detailed installation and setup instructions.
 
-### Standardlegitimasjon
+### Default Credentials
+
+Used if you install manually without setup.php
+
 *   **URL:** `/Hypnotize-admin/`
-*   **Brukernavn:** `admin`
-*   **Passord:** `password`
+*   **Username:** `admin`
+*   **Password:** `password`
 
-## Dokumentasjon
-*   [INSTALL.md](INSTALL.md) - Installasjonsguide.
-*   [AGENTS.md](AGENTS.md) - Utviklerretningslinjer og kodebasekontekst på engelsk.
-*   [ASSETS.md](ASSETS.md) - Oversikt over statiske ressurser (Bilder, CSS, Fonter).
-*   [CONTRIBUTING.md](CONTRIBUTING.md) - Hvordan bidra til prosjektet.
+## Documentation
+*   [INSTALL.md](INSTALL.md) - Installation guide.
+*   [AGENTS.md](AGENTS.md) - Developer guidelines and codebase context.
+*   [ASSETS.md](ASSETS.md) - Overview of static assets (Images, CSS, Fonts).
+*   [CONTRIBUTING.md](CONTRIBUTING.md) - How to contribute to the project.

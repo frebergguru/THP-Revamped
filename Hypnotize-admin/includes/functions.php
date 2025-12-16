@@ -19,19 +19,6 @@
 
     https://www.github.com/frebergguru/THP-Revamped
 */
-//START SRVERROR FUNCTION
-function srverror($err,$msg) {
-print '<div class="flex-table">
-    <div class="flex-header">
-        <font size="2" face="Arial"><strong>ERROR: '.$err.'</strong></font>
-    </div>
-    <div class="flex-content">
-        '.$msg.'
-    </div>
-</div>
-<br>';
-};
-//STOP SERVERROR FUNCTION
 
 //START MSG FUNCTION
 function msg($headline,$text) {
@@ -116,4 +103,66 @@ function parseurls($string){
         return $string;
 }
 //STOP PARSEURLS FUNCTION
+
+//START RETURN_BYTES FUNCTION
+function return_bytes($val) {
+    $val = trim($val);
+    $last = strtolower($val[strlen($val)-1]);
+    $val = (int)$val;
+    switch($last) {
+        case 'g':
+            $val *= 1024;
+        case 'm':
+            $val *= 1024;
+        case 'k':
+            $val *= 1024;
+    }
+    return $val;
+}
+//STOP RETURN_BYTES FUNCTION
+
+//START GET_MAX_UPLOAD_LIMIT FUNCTION
+function get_max_upload_limit() {
+    $max_upload = return_bytes(ini_get('upload_max_filesize'));
+    $max_post = return_bytes(ini_get('post_max_size'));
+    return min($max_upload, $max_post);
+}
+//STOP GET_MAX_UPLOAD_LIMIT FUNCTION
+
+//START FORMAT_BYTES FUNCTION
+function format_bytes($size) {
+    $units = array(' B', ' KB', ' MB', ' GB', ' TB');
+    for ($i = 0; $size >= 1024 && $i < 4; $i++) $size /= 1024;
+    return round($size, 2).$units[$i];
+}
+//STOP FORMAT_BYTES FUNCTION
+
+//START CHECK_FILE_SIZE FUNCTION
+function check_file_size($file, $max_size = null) {
+    if ($max_size === null) {
+        $max_size = get_max_upload_limit();
+    }
+    // Check if PHP already flagged it as too large
+    if (isset($file['error']) && ($file['error'] == UPLOAD_ERR_INI_SIZE || $file['error'] == UPLOAD_ERR_FORM_SIZE)) {
+        return false;
+    }
+    if ($file["size"] > $max_size) {
+        return false;
+    }
+    return true;
+}
+//STOP CHECK_FILE_SIZE FUNCTION
+
+//START CHECK_POST_MAX_SIZE_EXCEEDED FUNCTION
+function check_post_max_size_exceeded() {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST) && empty($_FILES) && isset($_SERVER['CONTENT_LENGTH']) && $_SERVER['CONTENT_LENGTH'] > 0) {
+        $max_post = return_bytes(ini_get('post_max_size'));
+        if ($_SERVER['CONTENT_LENGTH'] > $max_post) {
+            error('Filen er for stor. Maksimum total opplastingsstørrelse er '.format_bytes($max_post).'.');
+            return true;
+        }
+    }
+    return false;
+}
+//STOP CHECK_POST_MAX_SIZE_EXCEEDED FUNCTION
 ?>

@@ -128,7 +128,7 @@ print '<div class="flex-table">
         } else {
             print '<a href="?site='.$site.'&amp;id='.$pid.'">'.$sitename.'</a>';
         }
-        print ' &nbsp;&nbsp;<font size="3"><strong>Flytt til:</strong> [<strong><a href="?site='.$site.'&amp;action=moveleft&amp;id='.$pid.'">Venstre</a></strong>] [<strong><a href="?site='.$site.'&amp;action=moveright&amp;id='.$pid.'">H&oslash;yre</a></strong> ]</font><br><br>';
+        print ' <font size="1">Flytt til: [ <strong><a href="?site='.$site.'&amp;action=moveleft&amp;id='.$pid.'">Venstre</a></strong> ] [ <strong><a href="?site='.$site.'&amp;action=moveright&amp;id='.$pid.'">H&oslash;yre</a></strong> ]</font><br><br>';
     };
     print '</div>
 </div>

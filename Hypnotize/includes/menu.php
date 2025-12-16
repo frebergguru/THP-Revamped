@@ -34,11 +34,11 @@ $lbreak = $row["break"];
 //if $link2 is empty and $lbreak is 0 then
 if(empty($link2) && $lbreak =="0") {
 //print out the menu "items"
-print '<strong>[</strong> <a href="'.htmlspecialchars($_SERVER["PHP_SELF"], ENT_QUOTES, 'ISO-8859-1').'?site='.$id.'" class="menu">'.$sitename.'</a> <strong>]</strong> ';
+print '<strong>[</strong> <a href="'.rtrim($siteurl, '/').'/?site='.$id.'" class="menu">'.$sitename.'</a> <strong>]</strong> ';
 //else if $link2 is empty and $lbreak is 1 then
 }elseif(empty($link2) && $lbreak =="1"){
 //print out the menu item and add a break at the end
-print '<strong>[</strong> <a href="'.htmlspecialchars($_SERVER["PHP_SELF"], ENT_QUOTES, 'ISO-8859-1').'?site='.$id.'" class="menu">'.$sitename.'</a> <strong>]</strong><br>';
+print '<strong>[</strong> <a href="'.rtrim($siteurl, '/').'/?site='.$id.'" class="menu">'.$sitename.'</a> <strong>]</strong><br>';
 //else if $link2 not is empty and $lbreak is 0 then
 }elseif(!empty($link2) && $lbreak =="0"){
 //print out the menu "items"
@@ -60,7 +60,7 @@ while($row = mysqli_fetch_array($result)) {
 $module = $row["module"];
 $admin_menu_name = $row["module_menu_name"];
 //if $row[enable] is like 1 && $row[standalone] not is like 1 then print out the menu item
-if ($row["enable"]=="1" && $row["standalone"]!="1") {print '<strong>[</strong> <a href="'.htmlspecialchars($_SERVER["PHP_SELF"], ENT_QUOTES, 'ISO-8859-1').'?site='.$module.'" class="menu">'.$admin_menu_name.'</a> <strong>]</strong> ';};
+if ($row["enable"]=="1" && $row["standalone"]!="1") {print '<strong>[</strong> <a href="'.rtrim($siteurl, '/').'/?site='.$module.'" class="menu">'.$admin_menu_name.'</a> <strong>]</strong> ';};
 };
 //STOP PRINT OUT THE MODULES
 ?>

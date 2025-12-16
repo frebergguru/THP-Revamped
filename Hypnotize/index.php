@@ -93,7 +93,7 @@ print '<!DOCTYPE html>
 <body>
 <div class="container">
     <div class="header">
-        <a href="'.$_SERVER["PHP_SELF"].'" class="over">';
+        <a href="'.rtrim($siteurl, '/').'/" class="over">';
         //if $error not is like "503 then print out the pagename else print out "ERROR"
         if($error != "503"){print $pagename ?? '';}else{print "ERROR";};print'</a><br>
         <font face="Arial" size="1">';
@@ -142,7 +142,7 @@ print '<!DOCTYPE html>
             print " $time $uptime_str,  $load_str";
         }
         print '</font><br>
-        <strong>[</strong> <a href="'.$_SERVER["PHP_SELF"].'" class="menu">Hjem</a> <strong>]</strong> ';if($error != "503"){ if (($maintenance ?? '0')=="1" && $origip == ($maintenanceip ?? '')) { include 'includes/menu.php';}elseif(($maintenance ?? '0')=="0") { include 'includes/menu.php';};}; print'
+        <strong>[</strong> <a href="'.rtrim($siteurl, '/').'/" class="menu">Hjem</a> <strong>]</strong> ';if($error != "503"){ if (($maintenance ?? '0')=="1" && $origip == ($maintenanceip ?? '')) { include 'includes/menu.php';}elseif(($maintenance ?? '0')=="0") { include 'includes/menu.php';};}; print'
     </div>
 
     <div class="main-content">
@@ -156,19 +156,19 @@ print '<!DOCTYPE html>
         //if $error is like 404 then
         if ($error == "404") {
         //print out a error message
-        srverror("404", "Filen eller dokumentet <strong>".htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES, 'ISO-8859-1')."</strong><br>finnes ikke, vennligst pr&oslash;v et annet sted");
+        msg("ERROR: 404", "Filen eller mappen <strong>".htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES, 'ISO-8859-1')."</strong> finnes ikke.");
         //if $error is like 401 then
         }elseif($error == "401") {
         //print out a error message
-        srverror("401", "Du har ikke tilgang til denne siden!");
+        msg("ERROR: 401", "Du har ikke tilgang til denne siden!");
         //if $error is like 500 then
         }elseif($error == "500") {
         //print out a error message
-        srverror("500", "Det har skjedd en intern server feil, vennligst pr&oslash;v igjen senere!");
+        msg("ERROR: 500", "Det har skjedd en intern server feil, vennligst pr&oslash;v igjen senere!");
         //if $error is like 503 then
         }elseif($error == "503"){
         //print out a error message
-        srverror("503", "Serveren er fortiden overbelastet, vennligst pr&oslash;v igjen senere!");
+        msg("ERROR: 503", "Serveren er fortiden overbelastet, vennligst pr&oslash;v igjen senere!");
         }else{ //else check if the page is under maintenance and print out the maintenance message if it is else print out the center boxes
         if (($maintenance ?? '0')=="1" && $origip == ($maintenanceip ?? '')) { include 'includes/cbox.php';}elseif(($maintenance ?? '0')=="0") { include 'includes/cbox.php';}elseif(($maintenance ?? '0')=="1" && $origip != ($maintenanceip ?? '')) {msg("Vedlikehold","Siden er fortiden under vedlikehold, vennligst pr&oslash;v igjen senere!");};
         };

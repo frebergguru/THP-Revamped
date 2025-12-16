@@ -59,6 +59,11 @@ $backend_desc = $_POST['backend_desc'] ?? 'Hypnotize Backend';
 // Toggles
 $dguestbook = isset($_POST['dguestbook']) ? 1 : 0;
 $dlinks     = isset($_POST['dlinks']) ? 1 : 0;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $watermark = isset($_POST['watermark']) ? 1 : 0;
+} else {
+    $watermark = 1;
+}
 
 // SMTP Configs
 $smtp_host = $_POST['smtp_host'] ?? '';
@@ -157,8 +162,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($perm_error)) {
                 // Check if row 1 exists (from SQL dump), if not insert, else update
                 $check = mysqli_query($conn, "SELECT id FROM config WHERE id=1");
                 if (mysqli_num_rows($check) == 0) {
-                     $sql = "INSERT INTO config (id, title, pagename, siteurl, images, maintenance, dguestbook, dlinks, backend_language, backend_description, style, smtp_host, smtp_port, smtp_user, smtp_pass, smtp_encryption, admin_email)
-                             VALUES (1, '$site_title_esc', '$page_name_esc', '$site_url_esc', '$image_path_esc', 0, $dguestbook_int, $dlinks_int, '$backend_lang_esc', '$backend_desc_esc', '$style', '$smtp_host_esc', $smtp_port_int, '$smtp_user_esc', '$smtp_pass_esc', '$smtp_enc_esc', '$admin_email_esc')";
+                     $sql = "INSERT INTO config (id, title, pagename, siteurl, images, maintenance, dguestbook, dlinks, backend_language, backend_description, style, smtp_host, smtp_port, smtp_user, smtp_pass, smtp_encryption, admin_email, watermark)
+                             VALUES (1, '$site_title_esc', '$page_name_esc', '$site_url_esc', '$image_path_esc', 0, $dguestbook_int, $dlinks_int, '$backend_lang_esc', '$backend_desc_esc', '$style', '$smtp_host_esc', $smtp_port_int, '$smtp_user_esc', '$smtp_pass_esc', '$smtp_enc_esc', '$admin_email_esc', $watermark)";
                      mysqli_query($conn, $sql) or $message .= "Config Insert Error: " . mysqli_error($conn);
                 } else {
                      $sql = "UPDATE config SET
@@ -175,7 +180,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($perm_error)) {
                              smtp_user='$smtp_user_esc',
                              smtp_pass='$smtp_pass_esc',
                              smtp_encryption='$smtp_enc_esc',
-                             admin_email='$admin_email_esc'
+                             admin_email='$admin_email_esc',
+                             watermark=$watermark
                              WHERE id=1";
                      mysqli_query($conn, $sql) or $message .= "Config Update Error: " . mysqli_error($conn);
                 }
@@ -308,6 +314,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($perm_error)) {
                     <br>
                     <label class="checkbox-label">
                         <input type="checkbox" name="dlinks" <?php if($dlinks) echo 'checked'; ?>> Deaktiver Linker
+                    </label>
+                    <br>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="watermark" <?php if($watermark) echo 'checked'; ?>> Aktiver Vannmerke
                     </label>
                 </div>
             </div>

@@ -33,7 +33,7 @@ print '<div class="flex-table">
         </font>
     </div>
     <div class="flex-content">
-        <form action="'.$_SERVER["PHP_SELF"].'?site='.$site.'&amp;style='.$style.'" method="post">
+        <form action="'.rtrim($siteurl, '/').'/?site='.$site.'&amp;style='.$style.'" method="post">
         <strong>Din e-mail adresse:</strong><br>
         <input type="text" name="from" size="50"><br>
         <strong>Emne:</strong><br>

@@ -50,7 +50,7 @@ print '<div class="flex-table">
         <strong>Hjemmeside:</strong> '.stripslashes(chchar($homepage)).'<br>
         <strong>Bedskjed:</strong> '.stripslashes(parseurls(smilies(chchar($message)))).'<br>
         <br>
-        <a href="'.$_SERVER["PHP_SELF"].'?site='.$site.'&amp;style='.$style.'">Trykk her for &aring; g&aring; tilbake til Gjesteboken!</a>
+        <a href="'.rtrim($siteurl, '/').'/?site='.$site.'&amp;style='.$style.'">Trykk her for &aring; g&aring; tilbake til Gjesteboken!</a>
         </font>
     </div>
 </div>
