@@ -33,4 +33,5 @@ Dette gjelder ved manuell installasjon.
 *   [INSTALL.md](INSTALL.md) - Installasjonsguide.
 *   [AGENTS.md](AGENTS.md) - Utviklerretningslinjer og kodebasekontekst på engelsk.
 *   [ASSETS.md](ASSETS.md) - Oversikt over statiske ressurser (Bilder, CSS, Fonter).
+*   [STYLEGUIDE.MD](STYLEGUIDE.md) - Stilguide for THP.
 *   [CONTRIBUTING.md](CONTRIBUTING.md) - Hvordan bidra til prosjektet.
