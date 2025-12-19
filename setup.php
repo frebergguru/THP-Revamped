@@ -54,7 +54,7 @@ $page_name  = $_POST['page_name'] ?? 'The Hypnotize Project';
 $site_url   = $_POST['site_url'] ?? 'https://' . ($_SERVER['HTTP_HOST'] ?? 'localhost') . '/';
 $image_path = $_POST['image_path'] ?? '/images';
 $backend_lang = $_POST['backend_lang'] ?? 'no-bokmaal';
-$backend_desc = $_POST['backend_desc'] ?? 'Hypnotize Backend';
+$backend_desc = $_POST['backend_desc'] ?? 'The Hypnotize Project - RSS';
 
 // Toggles
 $dguestbook = isset($_POST['dguestbook']) ? 1 : 0;
@@ -104,8 +104,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($perm_error)) {
         // Create Database
         $db_name_escaped = mysqli_real_escape_string($conn, $db_name);
         mysqli_query($conn, "CREATE DATABASE IF NOT EXISTS `$db_name_escaped`");
+        
+        $should_install = true;
+
         if (!mysqli_select_db($conn, $db_name)) {
              $message = "Kunne ikke velge database: " . mysqli_error($conn);
+             $should_install = false;
         } else {
             // Check if installed (by checking if tables exist) to prevent overwrite
             // User requested "only can be run once". We check 'users' table.
@@ -116,14 +120,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($perm_error)) {
                  $row2 = mysqli_fetch_array($res2);
                  if ($row2['c'] > 0 && !isset($_POST['force_install'])) {
                      $message = "Databasen ser ut til å være i bruk. Installasjonen ble avbrutt for å forhindre overskriving.";
-                     // We stop here.
-                     $conn->close();
-                     // hack to show form again with error
                      $success = false;
-                     goto end_post;
+                     $should_install = false;
                  }
             }
+        }
 
+        if ($should_install) {
             // Import SQL
             $sql_file = 'Docs/Hypnotize-stable.sql';
             if (file_exists($sql_file)) {
@@ -221,7 +224,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($perm_error)) {
         }
         mysqli_close($conn);
     }
-    end_post:;
 }
 ?>
 <!DOCTYPE html>
@@ -240,7 +242,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($perm_error)) {
 
     <?php if ($show_config_code) { ?>
         <div class="instruction">
-            <h3>Installasjon vellykket! Siste steg kreves</h3>
+            <h3>Database installasjonen var vellykket, men du må sette opp config.php filene manuelt.</h3>
             <p>Av sikkerhetsmessige årsaker oppretter <strong>ikke</strong> denne installasjonsprogramvaren konfigurasjonsfilene automatisk. Du må manuelt opprette de to filene nedenfor og lime inn koden i dem.</p>
         </div>
 
