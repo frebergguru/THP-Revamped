@@ -22,7 +22,7 @@
 
 //START PRINT OUT LOCAL PAGES
 //Query the MySQL database and get everything from the "menu" table and order by sort_id, die if a error occure
-$result = mysqli_query($mlink, "SELECT * FROM menu ORDER BY sort_id") or mysqldie("Kan ikke lese fra $database.menu");
+$result = mysqli_query($mlink, "SELECT * FROM menu WHERE hidden='0' ORDER BY sort_id") or mysqldie("Kan ikke lese fra $database.menu");
 //while $results not is empty then
 while ($row = mysqli_fetch_array($result))
 {
@@ -59,8 +59,8 @@ while($row = mysqli_fetch_array($result)) {
 //get some information from the table
 $module = $row["module"];
 $admin_menu_name = $row["module_menu_name"];
-//if $row[enable] is like 1 && $row[standalone] not is like 1 then print out the menu item
-if ($row["enable"]=="1" && $row["standalone"]!="1") {print '<strong>[</strong> <a href="'.rtrim($siteurl, '/').'/?site='.$module.'" class="menu">'.$admin_menu_name.'</a> <strong>]</strong> ';};
+//if $row[enable] is like 1 && $row[standalone] not is like 1 && $row[hidden] not is like 1 then print out the menu item
+if ($row["enable"]=="1" && $row["standalone"]!="1" && $row["hidden"]!="1") {print '<strong>[</strong> <a href="'.rtrim($siteurl, '/').'/?site='.$module.'" class="menu">'.$admin_menu_name.'</a> <strong>]</strong> ';};
 };
 //STOP PRINT OUT THE MODULES
 ?>

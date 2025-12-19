@@ -63,6 +63,7 @@ if ($action == "update" && $id > 0) {
     $cat = isset($_POST["cat"]) ? (string) mysqli_real_escape_string($mlink, $_POST["cat"]) : '';
     $url = isset($_POST["url"]) ? (string) mysqli_real_escape_string($mlink, $_POST["url"]) : '';
     $break = isset($_POST["break"]) ? 1 : 0;
+    $hidden = isset($_POST["hidden"]) ? 1 : 0;
     
     if (!empty($cat)) {
         // Check for duplicate name (excluding self)
@@ -70,7 +71,7 @@ if ($action == "update" && $id > 0) {
         if (mysqli_num_rows($dup_check) > 0) {
              error('Det finnes allerede en side med navnet "'.chchar($cat).'"');
         } else {
-             $query = "UPDATE menu SET sitename='$cat', link='$url', `break`='$break' WHERE id='$id'";
+             $query = "UPDATE menu SET sitename='$cat', link='$url', `break`='$break', hidden='$hidden' WHERE id='$id'";
              mysqli_query($mlink, $query) or mysqldie("Kan ikke oppdatere $database.menu");
              info('Siden "'.chchar($cat).'" er oppdatert!');
         }
@@ -87,6 +88,7 @@ if ($id > 0) {
         $sitename_esc = htmlspecialchars($row["sitename"], ENT_QUOTES, 'ISO-8859-1');
         $link_esc = htmlspecialchars($row["link"], ENT_QUOTES, 'ISO-8859-1');
         $break_checked = ($row["break"] == 1) ? 'checked' : '';
+        $hidden_checked = ($row["hidden"] == 1) ? 'checked' : '';
         
         print '<div class="flex-table">
             <div class="flex-header">
@@ -100,6 +102,8 @@ if ($id > 0) {
                 <input type="text" name="url" size="30" value="'.$link_esc.'"><br>
                 <strong>Ny linje etter denne?</strong>
                 <input type="checkbox" name="break" value="1" '.$break_checked.'><br>
+                <strong>Skjul fra meny?</strong>
+                <input type="checkbox" name="hidden" value="1" '.$hidden_checked.'><br>
                 <br>
                 <input type="submit" value="Oppdater"> || <input type="button" value="Avbryt" onclick="window.location.href=\'index.php?site='.$site.'\'">
                 </form>

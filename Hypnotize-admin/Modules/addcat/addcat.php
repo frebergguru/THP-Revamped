@@ -23,6 +23,7 @@
 $cat = isset($_POST["cat"]) ? (string) mysqli_real_escape_string($mlink, $_POST["cat"]) : '';
 $url = isset($_POST["url"]) ? (string) mysqli_real_escape_string($mlink, $_POST["url"]) : '';
 $break = isset($_POST["break"]) ? 1 : 0;
+$hidden = isset($_POST["hidden"]) ? 1 : 0;
 $status = "0";
 //if $cat not is empty then
 if (!empty($cat)) {
@@ -64,7 +65,7 @@ if ($status != "1") {
     $row = mysqli_fetch_array($res);
     $new_sort_id = $row['max_sort'] + 1;
 	//insert the new site name to the table menu, die if a error occure
-	mysqli_query($mlink, "INSERT INTO `menu` (`site_id`, `sitename`, `link`, `break`, `sort_id`) VALUES ('', '$cat', '$url', '$break', '$new_sort_id')") or mysqldie("Kan ikke skrive til $database.menu");
+	mysqli_query($mlink, "INSERT INTO `menu` (`site_id`, `sitename`, `link`, `break`, `sort_id`, `hidden`) VALUES ('', '$cat', '$url', '$break', '$new_sort_id', '$hidden')") or mysqldie("Kan ikke skrive til $database.menu");
 	//print out a info box with the text ("Siden $cat er naa lagt til!")
 	info('Siden "'.chchar($cat).'" er n&aring; lagt til!');
 };
@@ -82,6 +83,8 @@ print '<div class="flex-table">
         <input type="text" name="url" size="30"><br>
         <strong>Ny linje etter denne?</strong>
         <input type="checkbox" name="break" value="1"><br>
+        <strong>Skjul fra meny?</strong>
+        <input type="checkbox" name="hidden" value="1"><br>
         <br>
         <input type="submit" value="Legg til"> || <input type="reset" value="Nullstill">
         </form>

@@ -21,7 +21,7 @@
 */
 //get some information
 $action = isset($_GET["action"]) ? $_GET["action"] : '';
-$module = isset($_GET["module"]) ? $_GET["module"] : '';
+$module = isset($_GET["module"]) ? mysqli_real_escape_string($mlink, $_GET["module"]) : '';
 //if $action is "Deaktiver" and $module not is empty then
 if ($action=="Deaktiver" && !empty($module)) {
 	//update table Admin and set enable to 0 where module is $module limit 1
@@ -32,6 +32,14 @@ if ($action=="Deaktiver" && !empty($module)) {
 	//update table Admin and set enable to 1 where module is $module limit 1
 	$query_string = 'UPDATE `Admin` SET `enable` = "1" WHERE `module` = "'.$module.'" LIMIT 1 ;';
 	mysqli_query($mlink, "$query_string") or mysqldie("Kan ikke skrive til $database.Admin");
+} elseif ($action=="skjul" && !empty($module)) {
+    // Hide from menu (hidden = 1)
+    $query_string = 'UPDATE `Admin` SET `hidden` = "1" WHERE `module` = "'.$module.'" LIMIT 1 ;';
+    mysqli_query($mlink, "$query_string") or mysqldie("Kan ikke skrive til $database.Admin");
+} elseif ($action=="vis" && !empty($module)) {
+    // Show in menu (hidden = 0)
+    $query_string = 'UPDATE `Admin` SET `hidden` = "0" WHERE `module` = "'.$module.'" LIMIT 1 ;';
+    mysqli_query($mlink, "$query_string") or mysqldie("Kan ikke skrive til $database.Admin");
 };
 //Query the MySQL database and get everything from the "Admin" table order by id ascending, die if a error occure
 $result=mysqli_query($mlink, "SELECT * FROM Admin ORDER BY id asc") or mysqldie("Kan ikke lese fra $database.Admin");
@@ -45,6 +53,23 @@ while ($row = mysqli_fetch_array($result))
 	if ($enable=="1") {$enable_text = "Ja";}else{$enable_text = "Nei";};
 	//if $enable is 1 then $eaction is "Deaktiver" else $eaction is "Aktiver"
 	if ($enable=="1") {$eaction = "Deaktiver";}else{$eaction = "Aktiver";};
+    
+    // Determine menu visibility status
+    $menu_visibility_html = "";
+    if ($row["standalone"] != "1") {
+        if ($row["hidden"] == "1") {
+            $menu_status = "Nei";
+            $menu_action = "vis";
+            $menu_action_text = "Vis";
+        } else {
+            $menu_status = "Ja";
+            $menu_action = "skjul";
+            $menu_action_text = "Skjul";
+        }
+        $menu_visibility_html = '<br>
+        <strong>Vis i meny?</strong> '.$menu_status.' - <strong><a href="index.php?site='.$site.'&amp;action='.$menu_action.'&amp;module='.$module2.'">'.$menu_action_text.'</a></strong>';
+    }
+
 	//if $module2 not is empty and $module_name not is empty and $enable not is empty then
 	if (!empty($module2) && !empty($module_name) && $enable!="") {
 //print out the "Module" box
@@ -52,7 +77,7 @@ print '<div class="flex-table">
     <div class="flex-header">
         <strong>Modul:</strong> '.$module2.'<br>
         <strong>Beskrivelse:</strong> '.$module_name.'<br>
-        <strong>Aktivert?</strong> '.$enable_text.' - <strong><a href="index.php?site='.$site.'&amp;action='.$eaction.'&amp;module='.$module2.'">'.$eaction.'</a></strong>
+        <strong>Aktivert?</strong> '.$enable_text.' - <strong><a href="index.php?site='.$site.'&amp;action='.$eaction.'&amp;module='.$module2.'">'.$eaction.'</a></strong>'.$menu_visibility_html.'
     </div>
 </div>
 <br>';

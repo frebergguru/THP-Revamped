@@ -40,7 +40,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2y$10$9cYY/oX8NRhdeGt5502Nq.qCgJbBC4pqWrA4JqwaqqCdvWe2tb3My');
+INSERT INTO `users` VALUES (1,'admin','$2y$10$9cYY/oX8NRhdeGt5502Nq.qCgJbBC4pqWrA4JqwaqqCdvWe2tb3My',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,6 +53,7 @@ CREATE TABLE `Admin` (
   `module_site` text NOT NULL,
   `enable` int(1) NOT NULL default '0',
   `site` text NOT NULL,
+  `hidden` int(1) default '0',
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 SET character_set_client = @saved_cs_client;
@@ -169,7 +170,7 @@ CREATE TABLE `dvd` (
   `comment` text NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `idx_title` (`title`(50)),
-  KEY `idx_year` (`year`)
+  KEY `idx_year` (`year`(4))
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 SET character_set_client = @saved_cs_client;
 
@@ -253,6 +254,7 @@ CREATE TABLE `menu` (
   `sort_id` int(11) default '0',
   `break` int(1) default '0',
   `link` text NOT NULL,
+  `hidden` int(1) default '0',
   PRIMARY KEY  (`id`),
   KEY `idx_sort_id` (`sort_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
